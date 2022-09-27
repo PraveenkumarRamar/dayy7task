@@ -54,3 +54,16 @@
 // }
 // ------------------------------------------------------------------------------
 
+// country using dollars
+
+let connect = new XMLHttpRequest();
+connect.open ("GET","https://restcountries.com/v2/all");
+connect.send()
+connect.onload = function() {
+    var res = JSON.parse(connect.response)
+    console.log(res)
+var arr = res.filter((val)=>val.currencies)
+// console.log(arr)
+var ress =arr.filter((val)=>(val.currencies[0].code=="USD")).map((val)=>val.name)
+console.log(ress)
+}
